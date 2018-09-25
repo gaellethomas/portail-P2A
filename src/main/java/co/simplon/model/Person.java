@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -19,7 +20,8 @@ import javax.persistence.Table;
 public class Person {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person")
+	@SequenceGenerator(name = "person", sequenceName = "person_seq", allocationSize = 1)
 	@Column(name = "id")
 	private Long id;
 
@@ -33,10 +35,10 @@ public class Person {
 	private String uid;
 
 	@Column(name = "phone_Number")
-	private int phoneNumber;
+	private String phoneNumber;
 
 	@Column(name = "mobile_Phone_Number")
-	private int mobilePhoneNumber;
+	private String mobilePhoneNumber;
 
 	@Column(name = "mail_Address")
 	private String mailAddress;
@@ -45,11 +47,8 @@ public class Person {
 	@JoinColumn(name = "fk_idteam")
 	private Team team;
 
-	@Column(name = "ip_Address")
-	private String ipAddress;
-
-	@Column(name = "xp_Address")
-	private String xpAddress;
+	@Column(name = "workstation_Name")
+	private String workstationName;
 
 	@ManyToMany
 	@JoinTable(name = "person_activity", joinColumns = {
@@ -60,8 +59,8 @@ public class Person {
 	public Person() {
 	}
 
-	public Person(String name, String firstName, String uid, int phoneNumber, int mobilePhoneNumber, String mailAddress,
-			Team team, String ipAddress, String xpAddress, List<Activity> activityList) {
+	public Person(String name, String firstName, String uid, String phoneNumber, String mobilePhoneNumber,
+			String mailAddress, Team team, String workstationName, List<Activity> activityList) {
 		this.name = name;
 		this.firstName = firstName;
 		this.uid = uid;
@@ -69,13 +68,12 @@ public class Person {
 		this.mobilePhoneNumber = mobilePhoneNumber;
 		this.mailAddress = mailAddress;
 		this.team = team;
-		this.ipAddress = ipAddress;
-		this.xpAddress = xpAddress;
+		this.workstationName = workstationName;
 		this.activityList = activityList;
 	}
 
-	public Person(Long id, String name, String firstName, String uid, int phoneNumber, int mobilePhoneNumber,
-			String mailAddress, Team team, String ipAddress, String xpAddress, List<Activity> activityList) {
+	public Person(Long id, String name, String firstName, String uid, String phoneNumber, String mobilePhoneNumber,
+			String mailAddress, Team team, String ipAddress, String workstationName, List<Activity> activityList) {
 		this.id = id;
 		this.name = name;
 		this.firstName = firstName;
@@ -84,8 +82,7 @@ public class Person {
 		this.mobilePhoneNumber = mobilePhoneNumber;
 		this.mailAddress = mailAddress;
 		this.team = team;
-		this.ipAddress = ipAddress;
-		this.xpAddress = xpAddress;
+		this.workstationName = workstationName;
 		this.activityList = activityList;
 	}
 
@@ -152,7 +149,7 @@ public class Person {
 	/**
 	 * @return the phoneNumber
 	 */
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
@@ -160,14 +157,14 @@ public class Person {
 	 * @param phoneNumber
 	 *            the phoneNumber to set
 	 */
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
 	/**
 	 * @return the mobilePhoneNumber
 	 */
-	public int getMobilePhoneNumber() {
+	public String getMobilePhoneNumber() {
 		return mobilePhoneNumber;
 	}
 
@@ -175,7 +172,7 @@ public class Person {
 	 * @param mobilePhoneNumber
 	 *            the mobilePhoneNumber to set
 	 */
-	public void setMobilePhoneNumber(int mobilePhoneNumber) {
+	public void setMobilePhoneNumber(String mobilePhoneNumber) {
 		this.mobilePhoneNumber = mobilePhoneNumber;
 	}
 
@@ -210,33 +207,18 @@ public class Person {
 	}
 
 	/**
-	 * @return the ipAddress
+	 * @return the workstationName
 	 */
-	public String getIpAddress() {
-		return ipAddress;
+	public String getWorkstationName() {
+		return workstationName;
 	}
 
 	/**
-	 * @param ipAddress
-	 *            the ipAddress to set
+	 * @param workstationName
+	 *            the workstationName to set
 	 */
-	public void setIpAddress(String ipAddress) {
-		this.ipAddress = ipAddress;
-	}
-
-	/**
-	 * @return the xpAddress
-	 */
-	public String getXpAddress() {
-		return xpAddress;
-	}
-
-	/**
-	 * @param xpAddress
-	 *            the xpAddress to set
-	 */
-	public void setXpAddress(String xpAddress) {
-		this.xpAddress = xpAddress;
+	public void setWorkstationName(String workstationName) {
+		this.workstationName = workstationName;
 	}
 
 	/**

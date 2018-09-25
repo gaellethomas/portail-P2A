@@ -10,33 +10,35 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "accessType")
+@Table(name = "linkType")
 public class LinkType {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "linkType")
+	@SequenceGenerator(name = "linkType", sequenceName = "linkType_seq", allocationSize = 1)
 	@Column(name = "id")
 	private Long id;
 
 	@Column(name = "name")
-	private String nameAccessType;
+	private String nameLinkType;
 
 	@OneToMany(mappedBy = "linkType", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Link> accessList;
+	private List<Link> linkList;
 
 	public LinkType() {
 	}
 
-	public LinkType(String nameAccessType) {
-		this.nameAccessType = nameAccessType;
+	public LinkType(String nameLinkType) {
+		this.nameLinkType = nameLinkType;
 	}
 
-	public LinkType(Long id, String nameAccessType) {
+	public LinkType(Long id, String nameLinkType) {
 		this.id = id;
-		this.nameAccessType = nameAccessType;
+		this.nameLinkType = nameLinkType;
 	}
 
 	/**
@@ -58,29 +60,29 @@ public class LinkType {
 	 * @return the nameLinkType
 	 */
 	public String getNameAccessType() {
-		return nameAccessType;
+		return nameLinkType;
 	}
 
 	/**
 	 * @param nameLinkType
 	 *            the nameLinkType to set
 	 */
-	public void setNameAccessType(String nameAccessType) {
-		this.nameAccessType = nameAccessType;
+	public void setNameLinkType(String nameLinkType) {
+		this.nameLinkType = nameLinkType;
 	}
 
 	/**
-	 * @return the accessList
+	 * @return the linkList
 	 */
-	public List<Link> getAccessList() {
-		return accessList;
+	public List<Link> getLinkList() {
+		return linkList;
 	}
 
 	/**
-	 * @param accessList
-	 *            the accessList to set
+	 * @param linkList
+	 *            the linkList to set
 	 */
-	public void setAccessList(List<Link> accessList) {
-		this.accessList = accessList;
+	public void setAccessList(List<Link> linkList) {
+		this.linkList = linkList;
 	}
 }
