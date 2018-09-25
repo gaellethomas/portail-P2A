@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "linkType")
+@Table(name = "accessType")
 public class LinkType {
 
 	@Id
@@ -22,21 +22,21 @@ public class LinkType {
 	private Long id;
 
 	@Column(name = "name")
-	private String nameLinkType;
+	private String nameAccessType;
 
 	@OneToMany(mappedBy = "linkType", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Access> accessList;
+	private List<Link> accessList;
 
 	public LinkType() {
 	}
 
-	public LinkType(String nameLinkType) {
-		this.nameLinkType = nameLinkType;
+	public LinkType(String nameAccessType) {
+		this.nameAccessType = nameAccessType;
 	}
 
-	public LinkType(Long id, String nameLinkType) {
+	public LinkType(Long id, String nameAccessType) {
 		this.id = id;
-		this.nameLinkType = nameLinkType;
+		this.nameAccessType = nameAccessType;
 	}
 
 	/**
@@ -57,22 +57,22 @@ public class LinkType {
 	/**
 	 * @return the nameLinkType
 	 */
-	public String getNameLinkType() {
-		return nameLinkType;
+	public String getNameAccessType() {
+		return nameAccessType;
 	}
 
 	/**
 	 * @param nameLinkType
 	 *            the nameLinkType to set
 	 */
-	public void setNameLinkType(String nameLinkType) {
-		this.nameLinkType = nameLinkType;
+	public void setNameAccessType(String nameAccessType) {
+		this.nameAccessType = nameAccessType;
 	}
 
 	/**
 	 * @return the accessList
 	 */
-	public List<Access> getAccessList() {
+	public List<Link> getAccessList() {
 		return accessList;
 	}
 
@@ -80,7 +80,7 @@ public class LinkType {
 	 * @param accessList
 	 *            the accessList to set
 	 */
-	public void setAccessList(List<Access> accessList) {
+	public void setAccessList(List<Link> accessList) {
 		this.accessList = accessList;
 	}
 }

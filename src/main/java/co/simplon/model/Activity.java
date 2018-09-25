@@ -29,8 +29,8 @@ public class Activity {
 	@ManyToMany(mappedBy = "activityList")
 	private List<Person> personList = new ArrayList<>();
 
-	@OneToMany(mappedBy = "activityAccess", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Access> accessList;
+	@OneToMany(mappedBy = "activityLink", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Link> linkList;
 
 	public Activity() {
 	}
@@ -83,17 +83,17 @@ public class Activity {
 	}
 
 	/**
-	 * @return the accessList
+	 * @return the linkList
 	 */
-	public List<Access> getAccessList() {
-		return accessList;
+	public List<Link> getLinkList() {
+		return linkList;
 	}
 
 	/**
-	 * @param accessList
-	 *            the accessList to set
+	 * @param linkList
+	 *            the linkList to set
 	 */
-	public void setAccessList(List<Access> accessList) {
-		this.accessList = accessList;
+	public void setLinkList(List<Link> linkList) {
+		this.linkList = linkList;
 	}
 }
