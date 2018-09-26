@@ -2,16 +2,20 @@ package co.simplon.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.simplon.model.Activity;
 import co.simplon.model.Person;
+import co.simplon.model.Team;
 import co.simplon.repo.PersonRepo;
 
 @Service
 public class PersonServiceImpl implements PersonService {
 
+	@Autowired
 	private PersonRepo personRepo;
+	@Autowired
+	private TeamService teamService;
 
 	public PersonServiceImpl(PersonRepo personRepo) {
 		this.personRepo = personRepo;
@@ -30,9 +34,9 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
-	public List<Person> getByNameStartsWith(String name) {
+	public List<Person> getByNameContaining(String name) {
 		// TODO Auto-generated method stub
-		return personRepo.findByNameStartsWith(name);
+		return personRepo.findByNameContaining(name);
 	}
 
 	@Override
@@ -60,9 +64,30 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
-	public List<Person> findByActivityListIsIn(Activity activity) {
-		// TODO Auto-generated method stub
-		return personRepo.findByActivityListIsIn(activity);
+	public List<Person> getByTeamP2a(Long activityId) {
+		Team teamP2a = teamService.getByName("P2A");
+		// choose 0 to mean "without activity"
+		// if (activityId == 0) {
+		// return personRepo.findByTeam(teamP2a);
+		// } else {
+		return personRepo.findByTeamAndActivityListId(teamP2a, activityId);
+	}
+	// }
+
+	@Override
+	public List<Person> getByTeamOthers(Long activityId) {
+		Team teamP2a = teamService.getByName("P2A");
+		return personRepo.findByTeamNotAndActivityListId(teamP2a, activityId);
+	}
+
+	@Override
+	public List<Person> getByTeamOthers() {
+		Team teamP2a = teamService.getByName("P2A");
+		// if (activityId == 0) {
+		return personRepo.findByTeamNot(teamP2a);
+		// } else {
+		// return personRepo.findByTeamNotAndActivityListId(teamP2a, activityId);
+		// }
 	}
 
 }
