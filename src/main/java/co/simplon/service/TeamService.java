@@ -11,4 +11,6 @@ public interface TeamService {
 
 	public List<Team> getAll();
 
+	public Team getByName(String name);
+
 }

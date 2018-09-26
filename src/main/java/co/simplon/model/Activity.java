@@ -25,13 +25,13 @@ public class Activity {
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "name")
+	@Column(name = "name", nullable = false)
 	private String name;
 
 	@ManyToMany(mappedBy = "activityList")
 	private List<Person> personList = new ArrayList<>();
 
-	@OneToMany(mappedBy = "activityLink", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "activity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Link> linkList;
 
 	public Activity() {

@@ -18,4 +18,10 @@ public class TeamServiceImpl implements TeamService {
 		return teamRepo.findAll();
 	}
 
+	@Override
+	public Team getByName(String name) {
+		// TODO Auto-generated method stub
+		return teamRepo.findByName(name);
+	}
+
 }

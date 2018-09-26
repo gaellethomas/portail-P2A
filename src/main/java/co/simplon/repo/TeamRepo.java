@@ -11,4 +11,6 @@ public interface TeamRepo extends JpaRepository<Team, Long> {
 	// getAll for drop dowm menu, to create person in database
 	// save all teams existing in database
 
+	public Team findByName(String name);
+
 }

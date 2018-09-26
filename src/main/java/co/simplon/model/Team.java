@@ -23,7 +23,7 @@ public class Team {
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "team_name")
+	@Column(name = "name")
 	private String name;
 
 	@OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
