@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import co.simplon.model.Link;
-import co.simplon.model.LinkType;
 import co.simplon.repo.LinkRepo;
 
 @Service
@@ -25,15 +24,14 @@ public class LinkServiceImpl implements LinkService {
 	/*
 	 * @Override public List<Link> getByTitleStartWith(String name) { return
 	 * linkRepo.findByTitleLinkStartsWith(name); }
-	 * 
-	 * 
-	 * @Override public List<Link> getByActivity(Activity activity) { return
-	 * linkRepo.findByActivityLink(activity); }
-	 * 
-	 * @Override public List<Link> getByActivityAndByLinkType(Activity activity,
-	 * LinkType linkType) { return linkRepo.findByActivityLinkAndLinkType(activity,
-	 * linkType); }
-	 * 
+	 */
+
+	@Override
+	public List<Link> getByActivityIdAndLinkTypeId(Long activityId, Long linkTypeId) {
+		return linkRepo.findByActivityIdAndLinkTypeId(activityId, linkTypeId);
+	}
+
+	/*
 	 * @Override public List<Link> getByActivityAndByTitleStartWith(Activity
 	 * activity, String titleLink) { return
 	 * linkRepo.findByActivityLinkAndTitleLinkStartsWith(activity, titleLink); }
@@ -43,9 +41,8 @@ public class LinkServiceImpl implements LinkService {
 	 */
 
 	@Override
-	public List<Link> getByLinkType(LinkType linkType) {
-		// TODO Auto-generated method stub
-		return linkRepo.findByLinkType(linkType);
+	public List<Link> getByLinkTypeId(Long linkTypeId) {
+		return linkRepo.findByLinkTypeId(linkTypeId);
 	}
 
 	/*

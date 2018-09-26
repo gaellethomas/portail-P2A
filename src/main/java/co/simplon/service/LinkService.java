@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import co.simplon.model.Link;
-import co.simplon.model.LinkType;
 
 @Service
 public interface LinkService {
@@ -20,12 +19,10 @@ public interface LinkService {
 	 * public List<Link> getByActivity(Activity activity);
 	 */
 
-	public List<Link> getByLinkType(LinkType linkType);
+	public List<Link> getByLinkTypeId(Long linkTypeId);
 
+	public List<Link> getByActivityIdAndLinkTypeId(Long activityId, Long linkTypeId);
 	/*
-	 * public List<Link> getByActivityAndByLinkType(Activity activity, LinkType
-	 * linkType);
-	 * 
 	 * public List<Link> getByActivityAndByTitleStartWith(Activity activity, String
 	 * titleLink);
 	 * 

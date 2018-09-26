@@ -1,44 +1,87 @@
 package co.simplon.controller;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.simplon.model.Link;
-import co.simplon.model.LinkType;
-import co.simplon.service.LinkServiceImpl;
+import co.simplon.service.LinkService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/link")
+
 public class LinkController {
 
-	private LinkServiceImpl linkServiceImpl;
+	@Autowired
+	private LinkService linkService;
 
-	public LinkController(LinkServiceImpl linkServiceImpl) {
-		this.linkServiceImpl = linkServiceImpl;
+	public LinkController(LinkService linkService) {
+		this.linkService = linkService;
 	}
 
-	// revoir toutes les methodes si on affiche les proc d un cote et les liens de l
-	// autre
-
-	@RequestMapping("/commun")
+	@RequestMapping("/link")
 	@GetMapping
-	public List<Link> displayAllLink() {
-		return linkServiceImpl.getAll();
-	}
+	public ResponseEntity<List<Link>> displayLink(@RequestParam("typeLink") Optional<String> linkTypeIdStrOpt,
+			@RequestParam("activityId") Optional<String> activityIdStrOpt) {
+		ResponseEntity<List<Link>> result = null;
 
-	@RequestMapping("/commun/{linkType}")
-	@GetMapping
-	public List<Link> displayAllByLinkType(@PathVariable("linkType") LinkType linkType) {
-		return linkServiceImpl.getByLinkType(linkType);
+		if (!linkTypeIdStrOpt.isPresent() && !activityIdStrOpt.isPresent()) {
+			// all links, even if not used in front
+			result = new ResponseEntity<List<Link>>(linkService.getAll(), HttpStatus.OK);
+
+		} else {
+			if (linkTypeIdStrOpt.isPresent()) {
+				try {
+					Long linkTypeId = Long.parseLong(linkTypeIdStrOpt.get());
+					if (activityIdStrOpt.isPresent()) {
+						try {
+							// link filtered by linkTypeId and activityId
+							Long activityId = Long.parseLong(activityIdStrOpt.get());
+							List<Link> linkList = linkService.getByActivityIdAndLinkTypeId(activityId, linkTypeId);
+							result = new ResponseEntity<List<Link>>(linkList,
+									linkList.size() == 0 ? HttpStatus.NO_CONTENT : HttpStatus.OK);
+
+						} catch (Exception e) {
+							// param activity not correct
+							e.printStackTrace();
+							result = new ResponseEntity<List<Link>>(HttpStatus.BAD_REQUEST);
+						}
+
+					} else {
+						// param activity missing
+						result = new ResponseEntity<List<Link>>(HttpStatus.BAD_REQUEST);
+					}
+
+				} catch (Exception e) {
+					// param linkTypeId not correct
+					e.printStackTrace();
+					result = new ResponseEntity<List<Link>>(HttpStatus.BAD_REQUEST);
+				}
+
+			} else {
+				// param typeLink missing
+				result = new ResponseEntity<List<Link>>(HttpStatus.BAD_REQUEST);
+			}
+		}
+		return result;
 	}
 
 	/*
+	 * @RequestMapping("/commun/{linkType}")
+	 * 
+	 * @GetMapping public ResponseEntity<List<Link>>
+	 * displayAllByLinkType(@PathVariable("linkType") LinkType linkType) { return
+	 * linkService.getByLinkType(linkType); }
+	 * 
+	 * 
 	 * display all link in accordance with activity page
 	 * 
 	 * @RequestMapping("/{activity}")

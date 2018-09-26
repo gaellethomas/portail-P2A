@@ -21,36 +21,35 @@ public class Link {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "fk_id_link_type")
-	@Column(name = "link_type")
+	@JoinColumn(name = "fk_id_linkType")
 	private LinkType linkType;
 
-	@Column(name = "title_link")
-	private String titleLink;
+	@Column(name = "title")
+	private String title;
 
-	@Column(name = "path_link")
-	private String pathLink;
+	@Column(name = "path")
+	private String path;
 
 	@ManyToOne
 	@JoinColumn(name = "fk_idactivity")
-	private Activity activityLink;
+	private Activity activity;
 
 	public Link() {
 	}
 
-	public Link(LinkType linkType, String titleLink, String pathLink, Activity activityLink) {
+	public Link(LinkType linkType, String title, String path, Activity activity) {
 		this.linkType = linkType;
-		this.titleLink = titleLink;
-		this.pathLink = pathLink;
-		this.activityLink = activityLink;
+		this.title = title;
+		this.path = path;
+		this.activity = activity;
 	}
 
-	public Link(Long id, LinkType linkType, String titleLink, String pathLink, Activity activityLink) {
+	public Link(Long id, LinkType linkType, String title, String path, Activity activity) {
 		this.id = id;
 		this.linkType = linkType;
-		this.titleLink = titleLink;
-		this.pathLink = pathLink;
-		this.activityLink = activityLink;
+		this.title = title;
+		this.path = path;
+		this.activity = activity;
 	}
 
 	/**
@@ -84,48 +83,48 @@ public class Link {
 	}
 
 	/**
-	 * @return the titleLink
+	 * @return the title
 	 */
-	public String getTitleLink() {
-		return titleLink;
+	public String getTitle() {
+		return title;
 	}
 
 	/**
-	 * @param titleLink
-	 *            the titleLink to set
+	 * @param title
+	 *            the title to set
 	 */
-	public void setTitleLink(String titleLink) {
-		this.titleLink = titleLink;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	/**
-	 * @return the pathLink
+	 * @return the path
 	 */
-	public String getPathLink() {
-		return pathLink;
+	public String getPath() {
+		return path;
 	}
 
 	/**
-	 * @param pathLink
-	 *            the pathLink to set
+	 * @param path
+	 *            the path to set
 	 */
-	public void setPathLink(String pathLink) {
-		this.pathLink = pathLink;
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 	/**
-	 * @return the activityLink
+	 * @return the activity
 	 */
-	public Activity getActivityLink() {
-		return activityLink;
+	public Activity getActivity() {
+		return activity;
 	}
 
 	/**
-	 * @param activityLink
-	 *            the activityLink to set
+	 * @param activity
+	 *            the activity to set
 	 */
-	public void setActivityLink(Activity activityLink) {
-		this.activityLink = activityLink;
+	public void setActivity(Activity activity) {
+		this.activity = activity;
 	}
 
 }
