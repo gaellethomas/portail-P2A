@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "team")
 public class Team {
@@ -26,6 +28,7 @@ public class Team {
 	@Column(name = "name")
 	private String name;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Person> personList;
 

@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "activity")
 public class Activity {
@@ -28,9 +30,11 @@ public class Activity {
 	@Column(name = "name", nullable = false)
 	private String name;
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "activityList")
 	private List<Person> personList = new ArrayList<>();
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "activity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Link> linkList;
 

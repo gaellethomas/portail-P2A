@@ -17,10 +17,6 @@ public class PersonServiceImpl implements PersonService {
 	@Autowired
 	private TeamService teamService;
 
-	public PersonServiceImpl(PersonRepo personRepo) {
-		this.personRepo = personRepo;
-	}
-
 	@Override
 	public List<Person> getAll() {
 		// TODO Auto-generated method stub

@@ -9,12 +9,16 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "linkType")
+@NamedQuery(name = "LinkType.getAllByLinkList", query = " SELECT distinct lt FROM LinkType lt join Link lk on lt.id = lk.linkType  WHERE lk.activity.id = :activityIdToFind")
 public class LinkType {
 
 	@Id
@@ -26,6 +30,7 @@ public class LinkType {
 	@Column(name = "name")
 	private String nameLinkType;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "linkType", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Link> linkList;
 
@@ -59,7 +64,7 @@ public class LinkType {
 	/**
 	 * @return the nameLinkType
 	 */
-	public String getNameAccessType() {
+	public String getNameLinkType() {
 		return nameLinkType;
 	}
 
@@ -82,7 +87,7 @@ public class LinkType {
 	 * @param linkList
 	 *            the linkList to set
 	 */
-	public void setAccessList(List<Link> linkList) {
+	public void setLinkList(List<Link> linkList) {
 		this.linkList = linkList;
 	}
 }

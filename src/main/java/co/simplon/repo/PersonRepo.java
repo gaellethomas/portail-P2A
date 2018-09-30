@@ -13,10 +13,6 @@ public interface PersonRepo extends JpaRepository<Person, Long> {
 
 	public List<Person> findByTeam(Team team);
 
-	// volonte de rechercher un collaborateur par son appartenance a une activité de
-	// sa
-	// liste, pas sure du result,a tester
-
 	public List<Person> findByTeamAndActivityListId(Team team, Long activityListId);
 
 	public List<Person> findByTeamNot(Team team);

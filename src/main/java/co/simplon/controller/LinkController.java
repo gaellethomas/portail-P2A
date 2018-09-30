@@ -23,13 +23,9 @@ public class LinkController {
 	@Autowired
 	private LinkService linkService;
 
-	public LinkController(LinkService linkService) {
-		this.linkService = linkService;
-	}
-
 	@RequestMapping("/link")
 	@GetMapping
-	public ResponseEntity<List<Link>> displayLink(@RequestParam("typeLink") Optional<String> linkTypeIdStrOpt,
+	public ResponseEntity<List<Link>> displayLink(@RequestParam("typeLinkId") Optional<String> linkTypeIdStrOpt,
 			@RequestParam("activityId") Optional<String> activityIdStrOpt) {
 		ResponseEntity<List<Link>> result = null;
 

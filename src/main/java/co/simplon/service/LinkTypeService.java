@@ -11,4 +11,6 @@ public interface LinkTypeService {
 
 	public List<LinkType> getAll();
 
+	public List<LinkType> getAllByActivityId(Long activityId);
+
 }

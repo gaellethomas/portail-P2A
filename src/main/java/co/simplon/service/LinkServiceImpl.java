@@ -2,6 +2,7 @@ package co.simplon.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.simplon.model.Link;
@@ -10,11 +11,8 @@ import co.simplon.repo.LinkRepo;
 @Service
 public class LinkServiceImpl implements LinkService {
 
+	@Autowired
 	private LinkRepo linkRepo;
-
-	public LinkServiceImpl(LinkRepo linkRepo) {
-		this.linkRepo = linkRepo;
-	}
 
 	@Override
 	public List<Link> getAll() {

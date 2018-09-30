@@ -28,7 +28,7 @@ public class PersonController {
 	// display persons of team P2A, separated contacts, in fonction
 	// activity
 	// 2 param: 1 = p2a or not ; 2 = which activity
-	public ResponseEntity<List<Person>> displayPerson(@RequestParam("p2a") Optional<String> p2aStrOpt,
+	public ResponseEntity<List<Person>> displayPerson(@RequestParam("belongP2a") Optional<String> p2aStrOpt,
 			@RequestParam("activityId") Optional<String> activityIdStrOpt) {
 
 		ResponseEntity<List<Person>> result = null;
