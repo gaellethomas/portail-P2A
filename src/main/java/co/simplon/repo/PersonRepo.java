@@ -11,11 +11,7 @@ import co.simplon.model.Team;
 @Repository
 public interface PersonRepo extends JpaRepository<Person, Long> {
 
-	public List<Person> findByTeam(Team team);
-
 	public List<Person> findByTeamAndActivityListId(Team team, Long activityListId);
-
-	public List<Person> findByTeamNot(Team team);
 
 	public List<Person> findByTeamNotAndActivityListId(Team team, Long activityListId);
 

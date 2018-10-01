@@ -76,14 +76,4 @@ public class PersonServiceImpl implements PersonService {
 		return personRepo.findByTeamNotAndActivityListId(teamP2a, activityId);
 	}
 
-	@Override
-	public List<Person> getByTeamOthers() {
-		Team teamP2a = teamService.getByName("P2A");
-		// if (activityId == 0) {
-		return personRepo.findByTeamNot(teamP2a);
-		// } else {
-		// return personRepo.findByTeamNotAndActivityListId(teamP2a, activityId);
-		// }
-	}
-
 }

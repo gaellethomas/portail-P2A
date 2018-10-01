@@ -17,8 +17,6 @@ public interface PersonService {
 
 	public List<Person> getByTeamP2a(Long activityId);
 
-	public List<Person> getByTeamOthers();
-
 	public List<Person> getByTeamOthers(Long activityId);
 
 	public List<Person> getByName(String name);
