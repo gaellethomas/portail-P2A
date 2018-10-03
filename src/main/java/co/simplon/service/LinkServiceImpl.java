@@ -19,35 +19,39 @@ public class LinkServiceImpl implements LinkService {
 		return linkRepo.findAll();
 	}
 
-	/*
-	 * @Override public List<Link> getByTitleStartWith(String name) { return
-	 * linkRepo.findByTitleLinkStartsWith(name); }
-	 */
+	@Override
+	public List<Link> getByLinkTypeId(Long linkTypeId) {
+		return linkRepo.findByLinkTypeId(linkTypeId);
+	}
 
 	@Override
 	public List<Link> getByActivityIdAndLinkTypeId(Long activityId, Long linkTypeId) {
 		return linkRepo.findByActivityIdAndLinkTypeId(activityId, linkTypeId);
 	}
 
-	/*
-	 * @Override public List<Link> getByActivityAndByTitleStartWith(Activity
-	 * activity, String titleLink) { return
-	 * linkRepo.findByActivityLinkAndTitleLinkStartsWith(activity, titleLink); }
-	 * 
-	 * @Override public List<Link> getByTitle(String titleLink) { // TODO
-	 * Auto-generated method stub return linkRepo.findByTitleLink(titleLink); }
-	 */
-
 	@Override
-	public List<Link> getByLinkTypeId(Long linkTypeId) {
-		return linkRepo.findByLinkTypeId(linkTypeId);
+	public List<Link> getByTitleContaining(String input) {
+		return linkRepo.findByTitleContaining(input);
 	}
 
-	/*
-	 * @Override public List<Link>
-	 * getByActivityLinkAndLinkTypeAndTitleLinkStartsWith(Activity activity,
-	 * LinkType linkType, String titleLink) { // TODO Auto-generated method stub
-	 * return null; }
-	 */
+	@Override
+	public List<Link> getByActivityId(Long activityId) {
+		return linkRepo.findByActivityId(activityId);
+	}
+
+	@Override
+	public List<Link> getByActivityIdAndTitleContaining(Long activityId, String input) {
+		return linkRepo.findByActivityIdAndTitleContaining(activityId, input);
+	}
+
+	@Override
+	public List<Link> getByActivityIdAndLinkTypeIdAndTitleContaining(Long activityId, Long linkTypeId, String input) {
+		return linkRepo.findByActivityIdAndLinkTypeIdAndTitleContaining(activityId, linkTypeId, input);
+	}
+
+	@Override
+	public List<Link> getByLinkTypeIdAndTitleContaining(String input, Long linkTypeId) {
+		return linkRepo.findByLinkTypeIdAndTitleContaining(linkTypeId, input);
+	}
 
 }

@@ -11,22 +11,18 @@ public interface LinkService {
 
 	public List<Link> getAll();
 
-	/* public List<Link> getByTitle(String titleLink); */
-
-	/*
-	 * public List<Link> getByTitleStartWith(String name);
-	 * 
-	 * public List<Link> getByActivity(Activity activity);
-	 */
-
 	public List<Link> getByLinkTypeId(Long linkTypeId);
 
 	public List<Link> getByActivityIdAndLinkTypeId(Long activityId, Long linkTypeId);
-	/*
-	 * public List<Link> getByActivityAndByTitleStartWith(Activity activity, String
-	 * titleLink);
-	 * 
-	 * public List<Link> getByActivityLinkAndLinkTypeAndTitleLinkStartsWith(Activity
-	 * activity, LinkType linkType, String titleLink);
-	 */
+
+	public List<Link> getByLinkTypeIdAndTitleContaining(String input, Long linkTypeId);
+
+	public List<Link> getByTitleContaining(String input);
+
+	public List<Link> getByActivityId(Long activityId);
+
+	public List<Link> getByActivityIdAndTitleContaining(Long activityId, String input);
+
+	public List<Link> getByActivityIdAndLinkTypeIdAndTitleContaining(Long activityId, Long linkTypeId, String input);
+
 }
