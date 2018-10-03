@@ -31,7 +31,7 @@ public class LinkServiceImpl implements LinkService {
 
 	@Override
 	public List<Link> getByTitleContaining(String input) {
-		return linkRepo.findByTitleContaining(input);
+		return linkRepo.findByTitleIgnoreCaseContaining(input);
 	}
 
 	@Override
@@ -41,17 +41,17 @@ public class LinkServiceImpl implements LinkService {
 
 	@Override
 	public List<Link> getByActivityIdAndTitleContaining(Long activityId, String input) {
-		return linkRepo.findByActivityIdAndTitleContaining(activityId, input);
+		return linkRepo.findByActivityIdAndTitleIgnoreCaseContaining(activityId, input);
 	}
 
 	@Override
 	public List<Link> getByActivityIdAndLinkTypeIdAndTitleContaining(Long activityId, Long linkTypeId, String input) {
-		return linkRepo.findByActivityIdAndLinkTypeIdAndTitleContaining(activityId, linkTypeId, input);
+		return linkRepo.findByActivityIdAndLinkTypeIdAndTitleIgnoreCaseContaining(activityId, linkTypeId, input);
 	}
 
 	@Override
 	public List<Link> getByLinkTypeIdAndTitleContaining(String input, Long linkTypeId) {
-		return linkRepo.findByLinkTypeIdAndTitleContaining(linkTypeId, input);
+		return linkRepo.findByLinkTypeIdAndTitleIgnoreCaseContaining(linkTypeId, input);
 	}
 
 }

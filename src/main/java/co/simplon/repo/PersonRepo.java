@@ -19,32 +19,33 @@ public interface PersonRepo extends JpaRepository<Person, Long> {
 
 	public List<Person> findByName(String name);
 
-	public List<Person> findByNameContaining(String name);
+	public List<Person> findByNameIgnoreCaseContaining(String name);
 
-	public List<Person> findByNameContainingAndFirstNameContaining(String name, String firstName);
+	public List<Person> findByNameIgnoreCaseContainingAndFirstNameIgnoreCaseContaining(String name, String firstName);
 
-	public List<Person> findByNameContainingAndFirstNameContainingAndActivityListId(String name, String firstName,
-			Long activityListId);
+	public List<Person> findByNameIgnoreCaseContainingAndFirstNameIgnoreCaseContainingAndActivityListId(String name,
+			String firstName, Long activityListId);
 
-	public List<Person> findByNameContainingAndFirstNameContainingAndUid(String name, String firstName, String uid);
+	public List<Person> findByNameIgnoreCaseContainingAndFirstNameIgnoreCaseContainingAndUidIgnoreCaseContaining(
+			String name, String firstName, String uid);
 
-	public List<Person> findByNameContainingAndActivityListId(String name, Long activityListId);
+	public List<Person> findByNameIgnoreCaseContainingAndActivityListId(String name, Long activityListId);
 
-	public List<Person> findByNameContainingAndUid(String name, String uid);
+	public List<Person> findByNameIgnoreCaseContainingAndUidIgnoreCaseContaining(String name, String uid);
 
-	public List<Person> findByUid(String uid);
+	public List<Person> findByUidIgnoreCaseContaining(String uid);
 
-	public List<Person> findByUidAndActivityListId(String uid, Long activityListId);
+	public List<Person> findByUidIgnoreCaseContainingAndActivityListId(String uid, Long activityListId);
 
-	public List<Person> findByFirstNameContaining(String firstName);
+	public List<Person> findByFirstNameIgnoreCaseContaining(String firstName);
 
-	public List<Person> findByFirstNameContainingAndActivityListId(String firstName, Long activityListId);
+	public List<Person> findByFirstNameIgnoreCaseContainingAndActivityListId(String firstName, Long activityListId);
 
-	public List<Person> findByFirstNameContainingAndUid(String firstName, String uid);
+	public List<Person> findByFirstNameIgnoreCaseContainingAndUidIgnoreCaseContaining(String firstName, String uid);
 
-	public List<Person> findByFirstNameContainingAndUidAndActivityListId(String firstName, String uid,
-			Long activityListId);
-
-	public List<Person> findByNameContainingAndFirstNameContainingAndUidAndActivityListId(String name, String firstName,
+	public List<Person> findByFirstNameIgnoreCaseContainingAndUidIgnoreCaseContainingAndActivityListId(String firstName,
 			String uid, Long activityListId);
+
+	public List<Person> findByNameIgnoreCaseContainingAndFirstNameIgnoreCaseContainingAndUidIgnoreCaseContainingAndActivityListId(
+			String name, String firstName, String uid, Long activityListId);
 }

@@ -29,30 +29,29 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public List<Person> getByNameContaining(String name) {
-		return personRepo.findByNameContaining(name);
+		return personRepo.findByNameIgnoreCaseContaining(name);
 	}
 
 	@Override
-	public List<Person> getByUid(String uid) {
-		return personRepo.findByUid(uid);
+	public List<Person> getByUidContaining(String uid) {
+		return personRepo.findByUidIgnoreCaseContaining(uid);
 	}
 
 	@Override
 	public List<Person> getByFirstNameContaining(String firstName) {
-		// TODO Auto-generated method stub
-		return personRepo.findByFirstNameContaining(firstName);
+		return personRepo.findByFirstNameIgnoreCaseContaining(firstName);
 	}
 
 	@Override
 	public List<Person> getByNameContainingAndFirstNameContaining(String name, String firstName) {
-		// TODO Auto-generated method stub
-		return personRepo.findByNameContainingAndFirstNameContaining(name, firstName);
+		return personRepo.findByNameIgnoreCaseContainingAndFirstNameIgnoreCaseContaining(name, firstName);
 	}
 
 	@Override
-	public List<Person> getByNameContainingAndFirstNameContainingAndUid(String name, String firstName, String uid) {
-		// TODO Auto-generated method stub
-		return personRepo.findByNameContainingAndFirstNameContainingAndUid(name, firstName, uid);
+	public List<Person> getByNameContainingAndFirstNameContainingAndUidContaining(String name, String firstName,
+			String uid) {
+		return personRepo.findByNameIgnoreCaseContainingAndFirstNameIgnoreCaseContainingAndUidIgnoreCaseContaining(name,
+				firstName, uid);
 	}
 
 	@Override
@@ -76,44 +75,48 @@ public class PersonServiceImpl implements PersonService {
 	public List<Person> getByNameContainingAndFirstNameContainingAndActivityId(String name, String firstName,
 			Long activityId) {
 
-		return personRepo.findByNameContainingAndFirstNameContainingAndActivityListId(name, firstName, activityId);
+		return personRepo.findByNameIgnoreCaseContainingAndFirstNameIgnoreCaseContainingAndActivityListId(name,
+				firstName, activityId);
 	}
 
 	@Override
 	public List<Person> getByNameContainingAndActivityId(String name, Long activityId) {
-		return personRepo.findByNameContainingAndActivityListId(name, activityId);
+		return personRepo.findByNameIgnoreCaseContainingAndActivityListId(name, activityId);
 	}
 
 	@Override
-	public List<Person> getByNameContainingAndUid(String name, String uid) {
-		return personRepo.findByNameContainingAndUid(name, uid);
+	public List<Person> getByNameContainingAndUidContaining(String name, String uid) {
+		return personRepo.findByNameIgnoreCaseContainingAndUidIgnoreCaseContaining(name, uid);
 	}
 
 	@Override
-	public List<Person> getByUidAndActivityId(String uid, Long activityId) {
-		return personRepo.findByUidAndActivityListId(uid, activityId);
+	public List<Person> getByUidContainingAndActivityId(String uid, Long activityId) {
+		return personRepo.findByUidIgnoreCaseContainingAndActivityListId(uid, activityId);
 	}
 
 	@Override
 	public List<Person> getByFirstNameContainingAndActivityId(String firstName, Long activityId) {
-		return personRepo.findByFirstNameContainingAndActivityListId(firstName, activityId);
+		return personRepo.findByFirstNameIgnoreCaseContainingAndActivityListId(firstName, activityId);
 	}
 
 	@Override
-	public List<Person> getByFirstNameContainingAndUid(String firstName, String uid) {
-		return personRepo.findByFirstNameContainingAndUid(firstName, uid);
+	public List<Person> getByFirstNameContainingAndUidContaining(String firstName, String uid) {
+		return personRepo.findByFirstNameIgnoreCaseContainingAndUidIgnoreCaseContaining(firstName, uid);
 	}
 
 	@Override
-	public List<Person> getByFirstNameContainingAndUidAndActivityId(String firstName, String uid, Long activityId) {
-		return personRepo.findByFirstNameContainingAndUidAndActivityListId(firstName, uid, activityId);
-	}
-
-	@Override
-	public List<Person> getByNameContainingAndFirstNameContainingAndUidAndActivityId(String name, String firstName,
-			String uid, Long activityId) {
-		return personRepo.findByNameContainingAndFirstNameContainingAndUidAndActivityListId(name, firstName, uid,
+	public List<Person> getByFirstNameContainingAndUidContainingAndActivityId(String firstName, String uid,
+			Long activityId) {
+		return personRepo.findByFirstNameIgnoreCaseContainingAndUidIgnoreCaseContainingAndActivityListId(firstName, uid,
 				activityId);
+	}
+
+	@Override
+	public List<Person> getByNameContainingAndFirstNameContainingAndUidContainingAndActivityId(String name,
+			String firstName, String uid, Long activityId) {
+		return personRepo
+				.findByNameIgnoreCaseContainingAndFirstNameIgnoreCaseContainingAndUidIgnoreCaseContainingAndActivityListId(
+						name, firstName, uid, activityId);
 	}
 
 }

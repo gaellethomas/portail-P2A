@@ -21,7 +21,7 @@ public interface PersonService {
 
 	public List<Person> getByFirstNameContaining(String firstName);
 
-	public List<Person> getByUid(String uid);
+	public List<Person> getByUidContaining(String uid);
 
 	public List<Person> getByActivityId(Long activityId);
 
@@ -30,21 +30,23 @@ public interface PersonService {
 
 	public List<Person> getByNameContainingAndFirstNameContaining(String name, String firstName);
 
-	public List<Person> getByNameContainingAndFirstNameContainingAndUid(String name, String firstName, String uid);
+	public List<Person> getByNameContainingAndFirstNameContainingAndUidContaining(String name, String firstName,
+			String uid);
 
 	public List<Person> getByNameContainingAndActivityId(String name, Long activityId);
 
-	public List<Person> getByNameContainingAndUid(String name, String uid);
+	public List<Person> getByNameContainingAndUidContaining(String name, String uid);
 
-	public List<Person> getByUidAndActivityId(String uid, Long activityId);
+	public List<Person> getByUidContainingAndActivityId(String uid, Long activityId);
 
 	public List<Person> getByFirstNameContainingAndActivityId(String firstName, Long activityId);
 
-	public List<Person> getByFirstNameContainingAndUid(String firstName, String uid);
+	public List<Person> getByFirstNameContainingAndUidContaining(String firstName, String uid);
 
-	public List<Person> getByFirstNameContainingAndUidAndActivityId(String firstName, String uid, Long activityId);
+	public List<Person> getByFirstNameContainingAndUidContainingAndActivityId(String firstName, String uid,
+			Long activityId);
 
-	public List<Person> getByNameContainingAndFirstNameContainingAndUidAndActivityId(String name, String firstName,
-			String uid, Long activityId);
+	public List<Person> getByNameContainingAndFirstNameContainingAndUidContainingAndActivityId(String name,
+			String firstName, String uid, Long activityId);
 
 }

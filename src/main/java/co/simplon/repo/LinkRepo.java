@@ -10,7 +10,7 @@ import co.simplon.model.Link;
 @Repository
 public interface LinkRepo extends JpaRepository<Link, Long> {
 
-	public List<Link> findByTitleContaining(String input);
+	public List<Link> findByTitleIgnoreCaseContaining(String input);
 
 	public List<Link> findByActivityId(Long activityId);
 
@@ -18,10 +18,11 @@ public interface LinkRepo extends JpaRepository<Link, Long> {
 
 	public List<Link> findByActivityIdAndLinkTypeId(Long activityId, Long linkTypeId);
 
-	public List<Link> findByActivityIdAndTitleContaining(Long activityId, String input);
+	public List<Link> findByActivityIdAndTitleIgnoreCaseContaining(Long activityId, String input);
 
-	public List<Link> findByLinkTypeIdAndTitleContaining(Long linkTypeId, String input);
+	public List<Link> findByLinkTypeIdAndTitleIgnoreCaseContaining(Long linkTypeId, String input);
 
-	public List<Link> findByActivityIdAndLinkTypeIdAndTitleContaining(Long activityId, Long linkTypeId, String input);
+	public List<Link> findByActivityIdAndLinkTypeIdAndTitleIgnoreCaseContaining(Long activityId, Long linkTypeId,
+			String input);
 
 }

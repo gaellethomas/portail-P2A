@@ -24,80 +24,8 @@ public class PersonController {
 
 	@RequestMapping("/person")
 	@GetMapping
-	// give an object Json type
-	// display persons of team P2A, separated contacts, in fonction
-	// activity
-	// 2 param: 1 = p2a or not ; 2 = which activity
-	public ResponseEntity<List<Person>> displayPerson(@RequestParam("belongP2a") Optional<String> p2aStrOpt,
-			@RequestParam("activityId") Optional<String> activityIdStrOpt) {
-
-		ResponseEntity<List<Person>> result = null;
-
-		if (!p2aStrOpt.isPresent() && !activityIdStrOpt.isPresent()) {
-			// all persons, not used in front
-			result = new ResponseEntity<List<Person>>(personService.getAll(), HttpStatus.OK);
-
-		} else {
-
-			if (p2aStrOpt.isPresent()) {
-				try {
-					Boolean p2a = Boolean.parseBoolean(p2aStrOpt.get());
-					if (p2a) {
-						// p2a members
-						if (activityIdStrOpt.isPresent()) {
-							// all p2a members filtered by activity
-							try {
-								Long activityId = Long.parseLong(activityIdStrOpt.get());
-								List<Person> personList = personService.getByTeamP2a(activityId);
-								result = new ResponseEntity<List<Person>>(personList,
-										personList.size() == 0 ? HttpStatus.NO_CONTENT : HttpStatus.OK);
-							} catch (Exception e) {
-								// param activity not correct
-								e.printStackTrace();
-								result = new ResponseEntity<List<Person>>(HttpStatus.BAD_REQUEST);
-							}
-
-						} else {
-							// param activity is missing
-							result = new ResponseEntity<List<Person>>(HttpStatus.BAD_REQUEST);
-						}
-
-					} else {
-						// others members = contacts
-						if (activityIdStrOpt.isPresent()) {
-							// all other contacts filtered by activity
-							try {
-								Long activityId = Long.parseLong(activityIdStrOpt.get());
-								List<Person> personList = personService.getByTeamOthers(activityId);
-								result = new ResponseEntity<List<Person>>(personList,
-										personList.size() == 0 ? HttpStatus.NO_CONTENT : HttpStatus.OK);
-							} catch (Exception e) {
-								// param activity not correct
-								e.printStackTrace();
-								result = new ResponseEntity<List<Person>>(HttpStatus.BAD_REQUEST);
-							}
-
-						} else {
-							// param activity is missing
-							result = new ResponseEntity<List<Person>>(HttpStatus.BAD_REQUEST);
-						}
-					}
-				} catch (Exception e) {
-					// param p2a not correct
-					e.printStackTrace();
-					result = new ResponseEntity<List<Person>>(HttpStatus.BAD_REQUEST);
-				}
-			} else {
-				// param p2a missing
-				result = new ResponseEntity<List<Person>>(HttpStatus.BAD_REQUEST);
-			}
-		}
-		return result;
-	}
-
-	@RequestMapping("/person/searched")
-	@GetMapping
-	public ResponseEntity<List<Person>> getPerson(@RequestParam("nameEntered") Optional<String> nameEnteredStrOpt,
+	public ResponseEntity<List<Person>> getPerson(@RequestParam("belongP2a") Optional<String> p2aStrOpt,
+			@RequestParam("nameEntered") Optional<String> nameEnteredStrOpt,
 			@RequestParam("firstNameEntered") Optional<String> firstNameEnteredStrOpt,
 			@RequestParam("uidEntered") Optional<String> uidEnteredStrOpt,
 			@RequestParam("activityId") Optional<String> activityIdStrOpt) {
@@ -108,6 +36,7 @@ public class PersonController {
 		String firstNameEntered = "";
 		String uidEntered = "";
 		Long activityId = null;
+		Boolean p2a;
 
 		if (activityIdStrOpt.isPresent()) {
 			try {
@@ -135,6 +64,21 @@ public class PersonController {
 			factorSearch += 1000;
 		}
 
+		if (p2aStrOpt.isPresent() && factorSearch != -1) {
+			try {
+				p2a = Boolean.parseBoolean(p2aStrOpt.get());
+				if (p2a) {
+					factorSearch += 10000;
+				} else {
+					factorSearch += 20000;
+				}
+			} catch (Exception e) {
+				// param activity not correct, setting -1
+				factorSearch = -1;
+				e.printStackTrace();
+			}
+		}
+
 		if (factorSearch != -1) {
 			// if all parameters received are good
 			switch (factorSearch) {
@@ -146,12 +90,12 @@ public class PersonController {
 			}
 			case 10: {
 				// all persons by uid chosen
-				personSearchedList = personService.getByUid(uidEntered);
+				personSearchedList = personService.getByUidContaining(uidEntered);
 				break;
 			}
 			case 11: {
 				// all persons by activity and uid selected
-				personSearchedList = personService.getByUidAndActivityId(uidEntered, activityId);
+				personSearchedList = personService.getByUidContainingAndActivityId(uidEntered, activityId);
 				break;
 			}
 			case 100: {
@@ -166,13 +110,14 @@ public class PersonController {
 			}
 			case 110: {
 				// all persons by firstname and uid entered
-				personSearchedList = personService.getByFirstNameContainingAndUid(firstNameEntered, uidEntered);
+				personSearchedList = personService.getByFirstNameContainingAndUidContaining(firstNameEntered,
+						uidEntered);
 				break;
 			}
 			case 111: {
 				// all persons by firstname and uid entered, and activityid selected
-				personSearchedList = personService.getByFirstNameContainingAndUidAndActivityId(firstNameEntered,
-						uidEntered, activityId);
+				personSearchedList = personService.getByFirstNameContainingAndUidContainingAndActivityId(
+						firstNameEntered, uidEntered, activityId);
 				break;
 			}
 			case 1000: {
@@ -187,7 +132,7 @@ public class PersonController {
 			}
 			case 1010: {
 				// all persons by name and uid
-				personSearchedList = personService.getByNameContainingAndUid(nameEntered, uidEntered);
+				personSearchedList = personService.getByNameContainingAndUidContaining(nameEntered, uidEntered);
 				break;
 			}
 			case 1100: {
@@ -204,14 +149,27 @@ public class PersonController {
 			}
 			case 1110: {
 				// all persons by name firstname and uid entered
-				personSearchedList = personService.getByNameContainingAndFirstNameContainingAndUid(nameEntered,
-						firstNameEntered, uidEntered);
+				personSearchedList = personService.getByNameContainingAndFirstNameContainingAndUidContaining(
+						nameEntered, firstNameEntered, uidEntered);
 				break;
 			}
 			case 1111: {
 				// all persons by name firstname uid and activity entered
-				personSearchedList = personService.getByNameContainingAndFirstNameContainingAndUidAndActivityId(
-						nameEntered, firstNameEntered, uidEntered, activityId);
+				personSearchedList = personService
+						.getByNameContainingAndFirstNameContainingAndUidContainingAndActivityId(nameEntered,
+								firstNameEntered, uidEntered, activityId);
+				break;
+			}
+
+			case 10001: {
+				// all persons by belong team P2a, and activity chosen
+				personSearchedList = personService.getByTeamP2a(activityId);
+				break;
+			}
+
+			case 20001: {
+				// all persons by not belong team P2a, and activity chosen
+				personSearchedList = personService.getByTeamOthers(activityId);
 				break;
 			}
 
