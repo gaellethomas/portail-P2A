@@ -22,39 +22,39 @@ WHERE NOT EXISTS (select id from TEAM where NAME = 'DIGITAL')
 -- INSERT INTO ACTIVITY
 
 INSERT INTO ACTIVITY
-(ID, NAME) 
-SELECT nextval('public.activity_seq'), 'COMMUN'
+(ID, NAME, DESCRIPTION) 
+SELECT nextval('public.activity_seq'), 'COMMUN', 'Toutes les activités non opérationnelles ( Mosaic, notes de frais, ...).'
 WHERE NOT EXISTS (select id from ACTIVITY where NAME = 'COMMUN')
 ;
 
 INSERT INTO ACTIVITY
-(ID, NAME) 
-SELECT nextval('public.activity_seq'), 'BLUEPRISM'
+(ID, NAME, DESCRIPTION) 
+SELECT nextval('public.activity_seq'), 'BLUEPRISM', 'Activité Robotique, RPA/RDA. Automatisations robotiques des postes agents ou des process.'
 WHERE NOT EXISTS (select id from ACTIVITY where NAME = 'BLUEPRISM')
 ;
 
 INSERT INTO ACTIVITY
-(ID, NAME) 
-SELECT nextval('public.activity_seq'), 'CONTEXTOR'
+(ID, NAME, DESCRIPTION) 
+SELECT nextval('public.activity_seq'), 'CONTEXTOR', 'Activité Robotique, RPA/RDA. Automatisations robotiques des postes agents ou des process.'
 WHERE NOT EXISTS (select id from ACTIVITY where NAME = 'CONTEXTOR')
 ;
 
 
 INSERT INTO ACTIVITY
-(ID, NAME) 
-SELECT nextval('public.activity_seq'), 'WEB'
+(ID, NAME, DESCRIPTION) 
+SELECT nextval('public.activity_seq'), 'WEB','Activité portails WEB (Java/Liferay).'
 WHERE NOT EXISTS (select id from ACTIVITY where NAME = 'WEB')
 ;
 
 INSERT INTO ACTIVITY
-(ID, NAME) 
-SELECT nextval('public.activity_seq'), 'AUTRES ASSETS'
+(ID, NAME, DESCRIPTION) 
+SELECT nextval('public.activity_seq'), 'AUTRES ASSETS','Activité sur les assets autonomes.'
 WHERE NOT EXISTS (select id from ACTIVITY where NAME = 'AUTRES ASSETS')
 ;
 
 INSERT INTO ACTIVITY
-(ID, NAME) 
-SELECT nextval('public.activity_seq'), 'SUIVI DE PRODUCTION'
+(ID, NAME, DESCRIPTION) 
+SELECT nextval('public.activity_seq'), 'SUIVI DE PRODUCTION', 'Activité GL.'
 WHERE NOT EXISTS (select id from ACTIVITY where NAME = 'SUIVI DE PRODUCTION')
 ;
 

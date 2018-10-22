@@ -30,6 +30,9 @@ public class Activity {
 	@Column(name = "name", nullable = false)
 	private String name;
 
+	@Column(name = "description")
+	private String description;
+
 	@JsonIgnore
 	@ManyToMany(mappedBy = "activityList")
 	private List<Person> personList = new ArrayList<>();
@@ -78,6 +81,21 @@ public class Activity {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description
+	 *            the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public List<Person> getPersonList() {
