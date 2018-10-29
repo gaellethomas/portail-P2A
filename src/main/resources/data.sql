@@ -23,38 +23,38 @@ WHERE NOT EXISTS (select id from TEAM where NAME = 'DIGITAL')
 
 INSERT INTO ACTIVITY
 (ID, NAME, DESCRIPTION) 
-SELECT nextval('public.activity_seq'), 'COMMUN', 'Toutes les activités non opérationnelles ( Mosaic, notes de frais, ...).'
+SELECT nextval('public.activity_seq'), 'COMMUN', 'Toutes les activités non opérationnelles ( Mosaic, notes de frais, ...)'
 WHERE NOT EXISTS (select id from ACTIVITY where NAME = 'COMMUN')
 ;
 
 INSERT INTO ACTIVITY
 (ID, NAME, DESCRIPTION) 
-SELECT nextval('public.activity_seq'), 'BLUEPRISM', 'Activité Robotique, RPA/RDA. Automatisations robotiques des postes agents ou des process.'
+SELECT nextval('public.activity_seq'), 'BLUEPRISM', 'Activité Robotique, RPA/RDA. Automatisations robotiques des postes agents ou des process'
 WHERE NOT EXISTS (select id from ACTIVITY where NAME = 'BLUEPRISM')
 ;
 
 INSERT INTO ACTIVITY
 (ID, NAME, DESCRIPTION) 
-SELECT nextval('public.activity_seq'), 'CONTEXTOR', 'Activité Robotique, RPA/RDA. Automatisations robotiques des postes agents ou des process.'
+SELECT nextval('public.activity_seq'), 'CONTEXTOR', 'Activité Robotique, RPA/RDA. Automatisations robotiques des postes agents ou des process'
 WHERE NOT EXISTS (select id from ACTIVITY where NAME = 'CONTEXTOR')
 ;
 
 
 INSERT INTO ACTIVITY
 (ID, NAME, DESCRIPTION) 
-SELECT nextval('public.activity_seq'), 'WEB','Activité portails WEB (Java/Liferay).'
+SELECT nextval('public.activity_seq'), 'WEB','Activité portails WEB (Java/Liferay)'
 WHERE NOT EXISTS (select id from ACTIVITY where NAME = 'WEB')
 ;
 
 INSERT INTO ACTIVITY
 (ID, NAME, DESCRIPTION) 
-SELECT nextval('public.activity_seq'), 'AUTRES ASSETS','Activité sur les assets autonomes.'
+SELECT nextval('public.activity_seq'), 'AUTRES ASSETS','Activité sur les assets autonomes'
 WHERE NOT EXISTS (select id from ACTIVITY where NAME = 'AUTRES ASSETS')
 ;
 
 INSERT INTO ACTIVITY
 (ID, NAME, DESCRIPTION) 
-SELECT nextval('public.activity_seq'), 'SUIVI DE PRODUCTION', 'Activité GL.'
+SELECT nextval('public.activity_seq'), 'SUIVI DE PRODUCTION', 'Activité GL'
 WHERE NOT EXISTS (select id from ACTIVITY where NAME = 'SUIVI DE PRODUCTION')
 ;
 
@@ -71,67 +71,67 @@ WHERE NOT EXISTS (select id from PERSON where UID = 'UIDGAELLE')
 
 INSERT INTO PERSON
 (ID, NAME, FIRST_NAME, UID, PHONE_NUMBER, MOBILE_PHONE_NUMBER, MAIL_ADDRESS, WORKSTATION_NAME, FK_IDTEAM)
-SELECT nextval('public.person_seq'), 'POUMEYROL','HUGUES','UIDGAELLE1','0556555551', '0666666661', '1gaelle.thomas.pf1@gmail.com', '1AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'P2A')
+SELECT nextval('public.person_seq'), 'POUMEYROL','HUGUES','UIDGAELLE1','0556555551', '0666666661', 'hugues.poumeyrol.pf1@gmail.com', '1AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'P2A')
 WHERE NOT EXISTS (select id from PERSON where UID = 'UIDGAELLE1')
 ;
 
 INSERT INTO PERSON
 (ID, NAME, FIRST_NAME, UID, PHONE_NUMBER, MOBILE_PHONE_NUMBER, MAIL_ADDRESS, WORKSTATION_NAME, FK_IDTEAM)
-SELECT nextval('public.person_seq'),'CULLERI','MANON','UIDGAELLE2','0556555552', '0666666662', '2gaelle.thomas.pf1@gmail.com', '2AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'P2A')
+SELECT nextval('public.person_seq'),'CULLERI','MANON','UIDGAELLE2','0556555552', '0666666662', 'manon.culleri@gmail.com', '2AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'P2A')
 WHERE NOT EXISTS (select id from PERSON where UID = 'UIDGAELLE2')
 ;
 
 
 INSERT INTO PERSON
 (ID, NAME, FIRST_NAME, UID, PHONE_NUMBER, MOBILE_PHONE_NUMBER, MAIL_ADDRESS, WORKSTATION_NAME, FK_IDTEAM)
-SELECT nextval('public.person_seq'),'TRITONE','SEBASTIEN','UIDGAELLE3','0556555553', '0666666663', '3gaelle.thomas.pf1@gmail.com', '3AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'P2A')
+SELECT nextval('public.person_seq'),'TRITONE','SEBASTIEN','UIDGAELLE3','0556555553', '0666666663', 'sebastien.tritone@gmail.com', '3AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'P2A')
 WHERE NOT EXISTS (select id from PERSON where UID = 'UIDGAELLE3')
 ;
 
 INSERT INTO PERSON
 (ID, NAME, FIRST_NAME, UID, PHONE_NUMBER, MOBILE_PHONE_NUMBER, MAIL_ADDRESS, WORKSTATION_NAME, FK_IDTEAM)
-SELECT nextval('public.person_seq'),'LECONNET','GEORGES','3UIDGAELLE','0556555563', '0666666683', '67gaelle.thomas.pf1@gmail.com', '3AB11111111111119', (SELECT id FROM PUBLIC.TEAM WHERE name = 'P2A')
+SELECT nextval('public.person_seq'),'LECONNET','GEORGES','3UIDGAELLE','0556555563', '0666666683', 'georges.leconnet@gmail.com', '3AB11111111111119', (SELECT id FROM PUBLIC.TEAM WHERE name = 'P2A')
 WHERE NOT EXISTS (select id from PERSON where UID = '3UIDGAELLE')
 ;
 
 
 INSERT INTO PERSON
 (ID, NAME, FIRST_NAME, UID, PHONE_NUMBER, MOBILE_PHONE_NUMBER, MAIL_ADDRESS, WORKSTATION_NAME, FK_IDTEAM)
-SELECT nextval('public.person_seq'),'SEMPE','PAUL','UIDGAELLE4','0556555554', '0666666664', '4gaelle.thomas.pf1@gmail.com', '4AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'P2A')
+SELECT nextval('public.person_seq'),'SEMPE','PAUL','UIDGAELLE4','0556555554', '0666666664', 'paul.sempe@gmail.com', '4AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'P2A')
 WHERE NOT EXISTS (select id from PERSON where UID = 'UIDGAELLE4')
 ;
 
 
 INSERT INTO PERSON
 (ID, NAME, FIRST_NAME, UID, PHONE_NUMBER, MOBILE_PHONE_NUMBER, MAIL_ADDRESS, WORKSTATION_NAME, FK_IDTEAM)
-SELECT nextval('public.person_seq'),'LABREZE','BAPTISTE','UIDGAELLE5','0556555555', '0666666665', '5gaelle.thomas.pf1@gmail.com', '5AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'P2A')
+SELECT nextval('public.person_seq'),'LABREZE','BAPTISTE','UIDGAELLE5','0556555555', '0666666665', 'baptiste.labreze@gmail.com', '5AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'P2A')
 WHERE NOT EXISTS (select id from PERSON where UID = 'UIDGAELLE5')
 ;
 
 
 INSERT INTO PERSON
 (ID, NAME, FIRST_NAME, UID, PHONE_NUMBER, MOBILE_PHONE_NUMBER, MAIL_ADDRESS, WORKSTATION_NAME, FK_IDTEAM)
-SELECT nextval('public.person_seq'),'SANINE','HERVE','UIDGAELLE6','0556555556', '0666666666', '6gaelle.thomas.pf1@gmail.com', '6AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'TEC')
+SELECT nextval('public.person_seq'),'SANINE','HERVE','UIDGAELLE6','0556555556', '0666666666', 'herve.sanine@gmail.com', '6AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'TEC')
 WHERE NOT EXISTS (select id from PERSON where UID = 'UIDGAELLE6')
 ;
 
 
 INSERT INTO PERSON
 (ID, NAME, FIRST_NAME, UID, PHONE_NUMBER, MOBILE_PHONE_NUMBER, MAIL_ADDRESS, WORKSTATION_NAME, FK_IDTEAM)
-SELECT nextval('public.person_seq'),'AUDIGNON','FRED','UIDGAELLE7','0556555557', '0666666667', '7gaelle.thomas.pf1@gmail.com', '7AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'TEC')
+SELECT nextval('public.person_seq'),'AUDIGNON','FRED','UIDGAELLE7','0556555557', '0666666667', 'fred.audignon@gmail.com', '7AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'TEC')
 WHERE NOT EXISTS (select id from PERSON where UID = 'UIDGAELLE7')
 ;
 
 INSERT INTO PERSON
 (ID, NAME, FIRST_NAME, UID, PHONE_NUMBER, MOBILE_PHONE_NUMBER, MAIL_ADDRESS, WORKSTATION_NAME, FK_IDTEAM)
-SELECT nextval('public.person_seq'),'TERRASSE','FABIEN','UIDGAELLE8','0556555558', '0666666668', '8gaelle.thomas.pf1@gmail.com', '8AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'DIGITAL')
+SELECT nextval('public.person_seq'),'TERRASSE','FABIEN','UIDGAELLE8','0556555558', '0666666668', 'fabien.terrasse@gmail.com', '8AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'DIGITAL')
 WHERE NOT EXISTS (select id from PERSON where UID = 'UIDGAELLE8')
 ;
 
 
 INSERT INTO PERSON
 (ID, NAME, FIRST_NAME, UID, PHONE_NUMBER, MOBILE_PHONE_NUMBER, MAIL_ADDRESS, WORKSTATION_NAME, FK_IDTEAM)
-SELECT nextval('public.person_seq'),'GUICHER','JM','UIDGAELLE9','0556555559', '0666666669', '9gaelle.thomas.pf1@gmail.com', '9AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'DIGITAL')
+SELECT nextval('public.person_seq'),'GUICHER','JM','UIDGAELLE9','0556555559', '0666666669', 'jm.guicher@gmail.com', '9AB11111111111111', (SELECT id FROM PUBLIC.TEAM WHERE name = 'DIGITAL')
 WHERE NOT EXISTS (select id from PERSON where UID = 'UIDGAELLE9')
 ;
 
@@ -148,6 +148,12 @@ INSERT INTO PERSON_ACTIVITY
 (FK_PERSON, FK_ACTIVITY)
 SELECT (SELECT id FROM PUBLIC.PERSON WHERE name = 'THOMAS'), (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'BLUEPRISM')
 WHERE NOT EXISTS (select * from PERSON_ACTIVITY where FK_PERSON = (SELECT id FROM PUBLIC.PERSON WHERE name = 'THOMAS') and FK_ACTIVITY = (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'BLUEPRISM'))
+;
+
+INSERT INTO PERSON_ACTIVITY
+(FK_PERSON, FK_ACTIVITY)
+SELECT (SELECT id FROM PUBLIC.PERSON WHERE name = 'TERRASSE'), (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'WEB')
+WHERE NOT EXISTS (select * from PERSON_ACTIVITY where FK_PERSON = (SELECT id FROM PUBLIC.PERSON WHERE name = 'TERRASSE') and FK_ACTIVITY = (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'WEB'))
 ;
 
 
@@ -234,62 +240,62 @@ WHERE NOT EXISTS (select id from LINK_TYPE where NAME = 'APPLICATION');
 
 INSERT INTO LINK
 (ID, FK_ID_LINK_TYPE, TITLE, PATH, FK_IDACTIVITY)
-SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'DOCUMENT'), 'DOC1COMMUN', 'PATH1', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'COMMUN')
+SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'DOCUMENT'), 'Procédure note de frais', 'http://127.0.0.1:8887/proc_note_de_frais.pdf', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'COMMUN')
 WHERE NOT EXISTS (select id from LINK where TITLE = 'DOC1COMMUN');
 ;
 
 
 INSERT INTO LINK
 (ID, FK_ID_LINK_TYPE, TITLE, PATH, FK_IDACTIVITY)
-SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'DOCUMENT'), 'DOC2COMMUN', 'PATH2', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'COMMUN')
+SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'DOCUMENT'), 'Procédure demande logiciel', 'http://127.0.0.1:8887/proc_demande_logiciel.pdf', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'COMMUN')
 WHERE NOT EXISTS (select id from LINK where TITLE = 'DOC1COMMUN');
 ;
 
 INSERT INTO LINK
 (ID, FK_ID_LINK_TYPE, TITLE, PATH, FK_IDACTIVITY)
-SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'DOCUMENT'), 'DOC1BLUEPRISM', 'PATH3', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'BLUEPRISM')
+SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'DOCUMENT'), 'Procédure installation BluePrism', 'http://127.0.0.1:8887/proc_install_BP.pdf', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'BLUEPRISM')
 WHERE NOT EXISTS (select id from LINK where TITLE = 'DOC1BLUEPRISM');
 ;
 
 INSERT INTO LINK
 (ID, FK_ID_LINK_TYPE, TITLE, PATH, FK_IDACTIVITY)
-SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'DOCUMENT'), 'DOC1CONTEXTOR', 'PATH4', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'CONTEXTOR')
+SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'DOCUMENT'), 'Procédure installation Contextor', 'http://127.0.0.1:8887/proc_install_Contextor.pdf', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'CONTEXTOR')
 WHERE NOT EXISTS (select id from LINK where TITLE = 'DOC1CONTEXTOR');
 ;
 
 INSERT INTO LINK
 (ID, FK_ID_LINK_TYPE, TITLE, PATH, FK_IDACTIVITY)
-SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'DOCUMENT'), 'DOC1WEB', 'PATH5', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'WEB')
+SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'DOCUMENT'), 'Procédure Liferay', 'http://127.0.0.1:8887/proc_Liferay.pdf', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'WEB')
 WHERE NOT EXISTS (select id from LINK where TITLE = 'DOC1WEB');
 ;
 
 INSERT INTO LINK
 (ID, FK_ID_LINK_TYPE, TITLE, PATH, FK_IDACTIVITY)
-SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'APPLICATION'), 'APP1WEB', 'PATH6', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'WEB')
+SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'APPLICATION'), 'Application 1 Web qui renvoit sur site Simplon', 'https://simplon.co', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'WEB')
 WHERE NOT EXISTS (select id from LINK where TITLE = 'APP1WEB');
 ;
 
 INSERT INTO LINK
 (ID, FK_ID_LINK_TYPE, TITLE, PATH, FK_IDACTIVITY)
-SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'APPLICATION'), 'APP2WEB', 'PATH7', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'WEB')
+SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'APPLICATION'), 'Application 2 Web qui renvoit sur site Simplon', 'https://simplon.co', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'WEB')
 WHERE NOT EXISTS (select id from LINK where TITLE = 'APP2WEB');
 ;
 
 INSERT INTO LINK
 (ID, FK_ID_LINK_TYPE, TITLE, PATH, FK_IDACTIVITY)
-SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'APPLICATION'), 'APP1AUTRESASSETS', 'PATH8', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'AUTRES ASSETS')
+SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'APPLICATION'), 'Application 1 Autres assets qui renvoit sur site Simplon', 'https://simplon.co', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'AUTRES ASSETS')
 WHERE NOT EXISTS (select id from LINK where TITLE = 'APP1AUTRESASSETS');
 ;
 
 INSERT INTO LINK
 (ID, FK_ID_LINK_TYPE, TITLE, PATH, FK_IDACTIVITY)
-SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'APPLICATION'), 'APP1SUIVI', 'PATH9', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'SUIVI DE PRODUCTION')
+SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'APPLICATION'), 'Application 1 Suivi de production qui renvoit sur site Simplon', 'https://simplon.co', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'SUIVI DE PRODUCTION')
 WHERE NOT EXISTS (select id from LINK where TITLE = 'APP1SUIVI');
 ;
 
 INSERT INTO LINK
 (ID, FK_ID_LINK_TYPE, TITLE, PATH, FK_IDACTIVITY)
-SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'APPLICATION'), 'APP1CONTEXTOR', 'PATH10', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'CONTEXTOR')
+SELECT nextval('public.link_seq'), (SELECT id FROM PUBLIC.LINK_TYPE WHERE name = 'APPLICATION'), 'Application 1 Contextor qui renvoit sur site Simplon', 'https://simplon.co', (SELECT id FROM PUBLIC.ACTIVITY WHERE name = 'CONTEXTOR')
 WHERE NOT EXISTS (select id from LINK where TITLE = 'APP1CONTEXTOR');
 ;
 
